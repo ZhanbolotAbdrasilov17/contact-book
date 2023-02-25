@@ -6,10 +6,20 @@ export const createEl = ({ tag, className, text, checked, innerHTML, ...attrs })
   if (checked) element.checked = checked
   if (tag === 'input' && !attrs.type) element.setAttribute('type', 'text')
   if (innerHTML) element.innerHTML = innerHTML
-
+  console.log(attrs)
   Object.keys(attrs).forEach((attrName) => {
     element.setAttribute(attrName, attrs[attrName])
   })
 
   return element
+}
+export const renderContact = (contact, parent) => {
+  const li = createEl({tag: 'li', className: 'contact-item'})
+  const link = createEl({
+   tag: 'a',
+   href: './detail.html',
+   text: contact.name,
+  })
+  li.append(link)
+  parent.append(li)
 }
